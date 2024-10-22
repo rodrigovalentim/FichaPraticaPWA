@@ -43,4 +43,52 @@ Facilidade de rollbacks: Caso uma mudança em uma branch cause problemas, é fá
 
 Integração contínua e deploys automatizados: Branches permitem a integração contínua (CI/CD), onde cada nova alteração pode ser automaticamente testada e validada antes de ser mesclada, tornando o processo mais ágil e seguro.
 3 – Nos Merges de conteúdos resultantes de um “Pop” podem resultar em conflitos. Em que consistem e como podem ser resolvidos esses conflitos?
+Os conflitos de merge resultantes de um git pop (que é um comando derivado de git stash pop, usado para aplicar as mudanças guardadas no stash ao branch atual) ocorrem quando Git não consegue automaticamente combinar as alterações no código que foram feitas em diferentes contextos. Isso acontece quando duas ou mais modificações afetam a mesma parte de um arquivo de maneiras incompatíveis, e Git não sabe qual alteração aplicar.
+
+### Como ocorrem os conflitos:
+1. Mudanças concorrentes: Se o código no stash modificado durante um git stash pop conflita com o código atual no branch, por exemplo, porque o mesmo trecho de código foi alterado de formas diferentes em cada lugar.
+   
+2. Mudanças sobrepostas: Quando você aplicou mudanças em um arquivo que já tinha sido alterado anteriormente, ou vice-versa, e Git não consegue determinar qual alteração prevalece.
+
+### Como identificar um conflito:
+Quando um conflito ocorre, Git pausa o processo de merge e marca os arquivos que contêm conflitos. As áreas de conflito são anotadas com marcações especiais no arquivo:
+- <<<<<<<: Indica o início do bloco que contém as alterações no branch atual.
+- =======: Separa as duas versões conflitantes.
+- >>>>>>>: Indica o final do bloco que contém as alterações que estavam no stash.
+
+Exemplo de um arquivo com conflito:
+
+bash
+<<<<<<< HEAD
+Código da branch atual (branch onde você está aplicando o stash).
+=======
+Código guardado no stash que está sendo aplicado.
+>>>>>>> stash@{0}
+
+
+### Como resolver os conflitos:
+1. Manual: Abra o arquivo em questão e examine as diferenças entre as alterações. Você pode:
+   - Escolher manter as alterações do branch atual (HEAD).
+   - Escolher aplicar as alterações do stash.
+   - Combinar manualmente as alterações das duas versões, criando uma versão que funcione para ambos os casos.
+
+2. Ferramentas de merge: Muitas IDEs e editores de texto oferecem ferramentas que facilitam a visualização dos conflitos e permitem resolvê-los visualmente, como o Visual Studio Code, o GitKraken, ou o P4Merge.
+
+3. Marcar como resolvido: Após editar e salvar o arquivo, use git add <arquivo> para indicar que o conflito foi resolvido. Quando todos os conflitos forem resolvidos, finalize o processo com:
+   bash
+   git commit
+   
+
+4. Abortar o merge: Se você decidir que as mudanças não devem ser aplicadas, pode abortar o processo de pop com o comando:
+   bash
+   git merge --abort
+   
+
+Isso desfaz o merge e retorna o repositório ao estado anterior ao git stash pop.
+
+### Dicas para evitar conflitos:
+- Sincronize frequentemente com o branch principal (pull) para minimizar as diferenças entre seu trabalho local e o branch remoto.
+- Comunique-se com a equipe para evitar que múltiplas pessoas trabalhem na mesma parte do código simultaneamente.
+
+Resolver conflitos de merge requer atenção aos detalhes, mas ferramentas adequadas e práticas colaborativas podem minimizar sua ocorrência.
 4 – “Clone” e “Fork” são formas diferentes de replicar um repositório Git. Quais as diferenças entre eles?
