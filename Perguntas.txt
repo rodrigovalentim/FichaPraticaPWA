@@ -92,3 +92,33 @@ Isso desfaz o merge e retorna o repositório ao estado anterior ao git stash pop
 
 Resolver conflitos de merge requer atenção aos detalhes, mas ferramentas adequadas e práticas colaborativas podem minimizar sua ocorrência.
 4 – “Clone” e “Fork” são formas diferentes de replicar um repositório Git. Quais as diferenças entre eles?
+"Clone" e "Fork" são duas operações diferentes em Git que servem para replicar repositórios, mas têm propósitos e características distintas. Aqui estão as principais diferenças:
+
+### 1. Definição:
+- Clone: O comando git clone cria uma cópia completa de um repositório remoto, incluindo todos os arquivos, histórico de versões e branches. Essa cópia fica em sua máquina local e permite que você trabalhe diretamente no repositório.
+  
+- Fork: Um fork é uma cópia de um repositório que é criada na plataforma de hospedagem (como GitHub, GitLab, etc.). Ele permite que você faça alterações em um repositório de outra pessoa, criando sua própria versão desse repositório na sua conta.
+
+### 2. Localização:
+- Clone: O clone resulta em uma cópia local do repositório no seu sistema, onde você pode modificar, criar branches e fazer commits sem afetar o repositório original até que você envie suas alterações (push) de volta ao repositório remoto.
+  
+- Fork: O fork é uma operação que ocorre no servidor (plataforma de hospedagem). Você cria uma nova versão do repositório na sua conta, que você pode então clonar localmente, mas a origem do fork é o repositório original na plataforma.
+
+### 3. Intenção:
+- Clone: É geralmente usado para trabalhar em um projeto localmente, onde você deseja ter a mesma versão do repositório original, podendo fazer mudanças sem necessariamente contribuir de volta para o repositório original.
+  
+- Fork: É usado principalmente quando você deseja contribuir para um projeto, mas não tem permissões de gravação no repositório original. Após fazer alterações no seu fork, você pode criar um pull request para sugerir que essas mudanças sejam incorporadas ao repositório original.
+
+### 4. Relação com o repositório original:
+- Clone: Uma vez clonado, o repositório local e o repositório remoto original mantêm um relacionamento, permitindo que você busque (git fetch) ou sincronize (git pull) atualizações do repositório original.
+  
+- Fork: O fork cria uma cópia independente do repositório. Você não tem um relacionamento direto com o repositório original, embora ainda possa sincronizar as atualizações através de git remote e comandos manuais.
+
+### 5. Contribuições:
+- Clone: Se você deseja contribuir para um projeto que você clonou, você geralmente precisa de permissões de gravação ou precisa criar um fork e trabalhar a partir dele.
+  
+- Fork: Ao fazer um fork, você pode fazer alterações e, posteriormente, solicitar que essas mudanças sejam incorporadas ao repositório original através de um pull request.
+
+### Resumo:
+- Use clone quando quiser trabalhar diretamente com um repositório e não precisar de um espaço separado para fazer modificações.
+- Use fork quando quiser criar uma versão independente de um repositório de outra pessoa para colaborar ou modificar sem afetar o repositório original.
