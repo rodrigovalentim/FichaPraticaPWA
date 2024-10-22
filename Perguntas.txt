@@ -1,4 +1,31 @@
 1 - O que são operações de “Commit”, “Push” e “Pop” efetuadas num repositório?
+Em um repositório de controle de versões como o Git, as operações de Commit, Push e Pop desempenham papéis distintos no gerenciamento de alterações no código. Aqui está o que cada uma delas faz:
+
+### 1. Commit
+- Descrição: O comando commit é usado para salvar as alterações feitas no repositório local. Quando você faz um commit, está criando um ponto de controle ou uma "fotografia" do estado atual dos arquivos que foram modificados e estão prontos para serem salvos no histórico do projeto.
+- Funcionamento: 
+  - As alterações precisam primeiro ser "adicionadas" à área de stage com o comando git add.
+  - Depois, ao executar git commit -m "Mensagem do commit", essas alterações são registradas no histórico do repositório local, com uma mensagem descritiva que explica as mudanças feitas.
+- Exemplo: git commit -m "Corrige bug no cálculo de taxas"
+
+### 2. Push
+- Descrição: O comando push envia os commits que foram feitos localmente para um repositório remoto (como o GitHub ou GitLab), tornando as alterações disponíveis para outros colaboradores.
+- Funcionamento: 
+  - Depois de fazer um ou mais commits no repositório local, ao executar git push, esses commits são transferidos para o repositório remoto no branch especificado.
+  - Esse processo garante que suas alterações sejam sincronizadas e visíveis para outros desenvolvedores.
+- Exemplo: git push origin main (envia os commits para o branch "main" do repositório remoto).
+
+### 3. Pop
+- Descrição: O comando pop é usado no contexto de "stash", que permite salvar temporariamente alterações não commitadas (sem fazer um commit), para que você possa mudar de branch ou trabalhar em outra tarefa. O git stash pop recupera essas alterações salvas anteriormente e as aplica novamente ao seu ambiente de trabalho.
+- Funcionamento: 
+  - git stash salva as alterações em uma área temporária e limpa seu diretório de trabalho para você trabalhar em outra coisa.
+  - git stash pop restaura essas alterações do stash e as aplica no diretório de trabalho atual, removendo-as do stash.
+- Exemplo: Se você estava no meio de uma implementação e precisou mudar de contexto, git stash pop reaplicará suas mudanças anteriores para você continuar de onde parou.
+
+### Resumo:
+- Commit: Salva alterações no repositório local.
+- Push: Envia commits do repositório local para o repositório remoto.
+- Pop: Restaura alterações temporariamente salvas (via stash) ao ambiente de trabalho atual.
 2 – Quais sáo as vantagens de usar Branchs num repositório git?
 3 – Nos Merges de conteúdos resultantes de um “Pop” podem resultar em conflitos. Em que consistem e como podem ser resolvidos esses conflitos?
 4 – “Clone” e “Fork” são formas diferentes de replicar um repositório Git. Quais as diferenças entre eles?
